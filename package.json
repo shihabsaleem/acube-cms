@@ -22,6 +22,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-import-export": "^0.0.1",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
@@ -33,6 +34,10 @@
   "engines": {
     "node": ">=20.0.0 <=26.x.x",
     "npm": ">=6.0.0"
+  },
+  "overrides": {
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.3"
   },
   "strapi": {
     "uuid": "b9c110ce-f285-4a33-95f9-1d223e25b868",

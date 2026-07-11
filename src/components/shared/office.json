@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_offices",
+  "info": {
+    "displayName": "Office"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "addressLines": {
+      "type": "json"
+    }
+  },
+  "config": {}
+}

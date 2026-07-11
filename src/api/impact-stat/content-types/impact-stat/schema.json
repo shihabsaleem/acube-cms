@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "impact_stats",
+  "info": {
+    "singularName": "impact-stat",
+    "pluralName": "impact-stats",
+    "displayName": "Impact Stat"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "labelLine1": {
+      "type": "string"
+    },
+    "labelLine2": {
+      "type": "string"
+    }
+  }
+}

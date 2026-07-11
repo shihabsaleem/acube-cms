@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_hero_stats",
+  "info": {
+    "displayName": "Hero Stat"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "label1": {
+      "type": "string"
+    },
+    "label2": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
