@@ -77,6 +77,31 @@
     },
     "serviceTitle3": {
       "type": "string"
+    },
+    "clientBadge": {
+      "type": "string"
+    },
+    "clientTitle": {
+      "type": "string"
+    },
+    "clientDescription": {
+      "type": "text"
+    },
+    "partnerBadge": {
+      "type": "string"
+    },
+    "partnerTitle": {
+      "type": "string"
+    },
+    "partnerHighlight": {
+      "type": "string"
+    },
+    "clientLogos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

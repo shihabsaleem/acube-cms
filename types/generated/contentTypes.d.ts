@@ -562,6 +562,10 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    clientBadge: Schema.Attribute.String;
+    clientDescription: Schema.Attribute.Text;
+    clientLogos: Schema.Attribute.Media<'images', true>;
+    clientTitle: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -587,6 +591,9 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       'api::home-page.home-page'
     > &
       Schema.Attribute.Private;
+    partnerBadge: Schema.Attribute.String;
+    partnerHighlight: Schema.Attribute.String;
+    partnerTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     serviceBadge: Schema.Attribute.String;
     serviceHighlight: Schema.Attribute.String;
