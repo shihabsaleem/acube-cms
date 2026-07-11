@@ -1,7 +1,7 @@
 {
   "collectionName": "components_shared_offices",
   "info": {
-    "displayName": "Office"
+    "displayName": "Offices"
   },
   "options": {},
   "attributes": {
@@ -12,7 +12,7 @@
       "type": "text"
     },
     "addressLines": {
-      "type": "json"
+      "type": "text"
     }
   },
   "config": {}

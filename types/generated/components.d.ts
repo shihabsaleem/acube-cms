@@ -26,11 +26,11 @@ export interface SharedHeroStat extends Struct.ComponentSchema {
 export interface SharedOffice extends Struct.ComponentSchema {
   collectionName: 'components_shared_offices';
   info: {
-    displayName: 'Office';
+    displayName: 'Offices';
   };
   attributes: {
     address: Schema.Attribute.Text;
-    addressLines: Schema.Attribute.JSON;
+    addressLines: Schema.Attribute.Text;
     title: Schema.Attribute.String;
   };
 }
