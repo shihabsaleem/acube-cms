@@ -122,6 +122,10 @@ coverage
 ############################
 
 .env
+.env.prod 
+.env.example
+old.env
+fly
 license.txt
 exports
 .strapi
@@ -129,3 +133,4 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+fly.toml
