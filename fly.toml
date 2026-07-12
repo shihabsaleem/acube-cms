@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for acube-cms on 2026-07-11T19:31:01+04:00
+# fly.toml app configuration file generated for acube on 2026-07-12T12:35:16+04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'acube-cms'
-primary_region = 'sin'
+app = 'acube'
+primary_region = 'bom'
 
 [build]
 [[mounts]]
