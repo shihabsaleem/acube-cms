@@ -1,50 +1,23 @@
-# syntax = docker/dockerfile:1
-
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=24.11.1
-FROM node:${NODE_VERSION}-slim AS base
-
-LABEL fly_launch_runtime="Node.js"
-
-# Node.js app lives here
-WORKDIR /app
-
-# Set production environment
-ENV NODE_ENV="production"
-
-
-# Throw-away build stage to reduce size of final image
-FROM base AS build
-
-# Install packages needed to build node modules
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
-
-# Install node modules
-COPY package-lock.json package.json ./
-RUN npm ci --include=dev
-
-# Copy application code
+# ---- Build Stage ----
+FROM node:20-alpine AS build
+RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git
+WORKDIR /opt/
+COPY package.json package-lock.json ./
+# User's snippet used yarn, but this project has package-lock.json. I'll stick to npm to match the existing lockfile.
+RUN npm install -g node-gyp && npm ci
+WORKDIR /opt/app
 COPY . .
-
-# Build application
+ENV NODE_ENV=production
 RUN npm run build
 
-# Remove development dependencies
-RUN npm prune --omit=dev
-
-
-# Final stage for app image
-FROM base
-
-# Copy built application
-COPY --from=build /app /app
-
-# Setup sqlite3 on a separate volume
-RUN mkdir -p /data
-VOLUME /data
-
-# Start the server by default, this can be overwritten at runtime
+# ---- Production Stage ----
+FROM node:20-alpine
+RUN apk add --no-cache vips-dev
+WORKDIR /opt/
+COPY package.json package-lock.json ./
+ENV NODE_ENV=production
+RUN npm ci --omit=dev
+WORKDIR /opt/app
+COPY --from=build /opt/app ./
 EXPOSE 1337
-ENV DATABASE_URL="file:///data/sqlite.db"
-CMD [ "npm", "run", "start" ]
+CMD ["npm", "run", "start"]

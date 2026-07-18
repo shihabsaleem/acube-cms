@@ -1,61 +1,91 @@
-# 🚀 Getting started with Strapi
+# Acube CMS
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+This is a [Strapi](https://strapi.io) application that serves as the backend Content Management System (CMS) for the Acube platform. It manages dynamic content like pages, services, testimonials, and site-wide global settings.
 
-### `develop`
+## 🚀 Getting Started
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+Strapi comes with a full-featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) to scaffold and manage the project.
 
+### Prerequisites
+- Node.js (>=20.0.0 <=26.x.x)
+- NPM or Yarn
+
+### Installation
+
+```bash
+npm install
 ```
+
+### Development
+
+Start your Strapi application with autoReload enabled.
+
+```bash
 npm run develop
 # or
 yarn develop
 ```
 
-### `start`
+### Production Start
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+Start your Strapi application with autoReload disabled.
 
-```
+```bash
 npm run start
 # or
 yarn start
 ```
 
-### `build`
+### Build
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+Build the admin panel UI.
 
-```
+```bash
 npm run build
 # or
 yarn build
 ```
 
-## ⚙️ Deployment
+## 🏗️ Architecture & Content Types
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+The CMS is structured using Strapi's Collection Types, Single Types, and Components to organize content effectively.
 
-```
-yarn strapi deploy
-```
+### Collection Types
+These models are used for content that has multiple entries.
+- **Service**: Manages the various services offered.
+- **Testimonial**: Client reviews and testimonials.
+- **Gallery**: Media and image galleries.
+- **Impact Stat**: Statistics showcasing the company's impact or metrics.
 
-## 📚 Learn more
+### Single Types
+These models are used for pages or settings that only have one instance.
+- **Home Page**: Content for the main landing page.
+- **About**: Content for the About Us page.
+- **Legal Page**: Content for privacy policies, terms, and conditions.
+- **Global**: Site-wide configuration, such as navigation, footer information, and global SEO settings.
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+### Components
+Reusable data structures shared across multiple content types (found in `src/components/shared`).
+- **Button**: Defines CTA links, labels, and styles.
+- **Hero Stat**: Defines specific statistics used in hero sections.
+- **Office**: Defines office locations and contact details.
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+## ⚙️ Plugins & Integrations
 
-## ✨ Community
+- **Cloudinary**: Configured via `@strapi/provider-upload-cloudinary` for cloud-based media and asset management.
+- **Users Permissions**: Strapi's default `@strapi/plugin-users-permissions` for handling JWT authentication and role-based access control.
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+## 📦 Deployment
 
----
+This project is configured for containerized deployment on **Suga.app**. The `Dockerfile` has been optimized with a multi-stage build to ensure the memory-intensive Admin UI build step occurs safely without exhausting Suga's 256 MiB RAM limit.
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+**To deploy:**
+1. Log into [Suga.app](https://suga.app/).
+2. Create a new project and link this repository.
+3. Configure your Environment Variables (copy from your `.env`).
+4. Suga will automatically detect the `Dockerfile` and build/deploy your application.
+
+## 📚 Learn More
+
+- [Strapi Documentation](https://docs.strapi.io) - Official Strapi documentation.
+- [Strapi Forums](https://forum.strapi.io/) - Discuss and get help from the community.
