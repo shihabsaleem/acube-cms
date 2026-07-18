@@ -19,5 +19,6 @@ ENV NODE_ENV=production
 RUN npm ci --omit=dev
 WORKDIR /opt/app
 COPY --from=build /opt/app ./
-EXPOSE 1337
+ENV PORT=8080
+EXPOSE 8080
 CMD ["npm", "run", "start"]
